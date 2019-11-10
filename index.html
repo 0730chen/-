@@ -9,23 +9,43 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
   </head>
   <link href="./main.css" rel="stylesheet" type="text/css" />
+  <style type="text/css">
+    .icon {
+      width: 1em;
+      height: 1em;
+      vertical-align: -0.15em;
+      fill: currentColor;
+      overflow: hidden;
+    }
+  </style>
   <title>做一个导航网站</title>
   <body>
-    <div id="search">
-      1.先是一个搜索框，可以搜索其他内容
-      <form action="https://www.baidu.com/s" method="get">
-        <input name="wd" type="text" />
-        <button type="submit">搜索按钮</button>
+    <div class="header">
+      <form action="https://www.baidu.com/s" method="get" id="search">
+        <input name="wd" type="text" class="input" />
+        <button type="submit" class="search">搜索</button>
       </form>
     </div>
     <div>下面是一个可以储存添加内容的容器</div>
-    <button class="Add">这个是一个添加按钮，可以添加导航</button>
-    <!-- <a href="https://www.baidu.com/s">a标签</a> -->
-    <div class="container">
-      <div class="menu"></div>
-      <ul class="item-lists"></ul>
-    </div>
+    <main>
+      <div class="main-container">
+        <ul class="itemList">
+          <li class="last">
+            <div>
+              <div class="logo">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-62tianjia"></use>
+                </svg>
+              </div>
+              <div class="content">新增内容</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </main>
   </body>
 </html>
+<script src="//at.alicdn.com/t/font_1502027_tjqhjfr078.js"></script> 
+<script src="//at.alicdn.com/t/font_1502027_x1k277s1cbe.js"></script>
 <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
 <script src="index.js"></script>

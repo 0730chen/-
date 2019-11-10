@@ -118,14 +118,64 @@ parcelRequire = (function (modules, cache, entry, globalName) {
 
   return newRequire;
 })({"index.js":[function(require,module,exports) {
-var i = 0; //添加内容是$('标签'),然后使用append appendTo appendAfter
+var i = 0;
+var x = localStorage.getItem('x');
+var xObject = JSON.parse(x); //字符串转化成对象
+//logo有图片和文本
 
-$('.Add').on('click', function (e) {
-  i = i + 1;
-  console.log('添加');
-  $('.item-lists').append("\n    <li>\u6211\u662F\u7B2C".concat(i, "\u4E2A\u9879\u76EE</li>\n    "));
-  console.log($('.container'));
-}); // $('.Add').click(()=>{
+var $last = $('.last');
+var hasMap = xObject === [] || [{
+  logo: 'A',
+  url: 'https://www.bilibili.com/'
+}, {
+  logo: 'B',
+  url: 'https://www.bilibili.com/'
+}, {
+  logo: 'C',
+  url: 'https://www.bilibili.com/'
+}]; //添加内容是$('标签'),然后使用append appendTo appendAfter
+//定义一个函数
+
+var render = function render() {
+  $('.itemList').find('.item').remove();
+  hasMap.forEach(function (node, index) {
+    var $li = $("\n        <li class=\"item\">\n        <div class=\"logo\">".concat(node.logo, "</div>\n        <div class=\"content\">").concat(node.logo, "\u7AD9</div>\n        <div class=\"delete\">\n        <svg class=\"icon\" aria-hidden=\"true\">\n        <use xlink:href=\"#icon-shanchu\"></use>\n        </svg>\n        </div>\n      </li>")).insertBefore($last);
+    $li.on('click', function () {
+      window.open(node.url);
+    });
+    $('.item').on('click', '.delete', function (e) {
+      e.stopPropagation(); //阻止冒泡
+
+      hasMap.splice(index, 1);
+      render();
+    });
+  });
+};
+
+render();
+$('.last').on('click', function () {
+  var url = window.prompt('你要添加的网站');
+  console.log(url);
+
+  if (url === '' || url.indexOf('http') !== 0) {
+    url = 'https://' + url;
+  }
+
+  console.log(url);
+  hasMap.push({
+    logo: url[0],
+    url: url
+  });
+  render(); //在使用localstrage中储存数据
+  // console.log($('.container'))
+}); //监听页面离开
+
+window.onbeforeunload = function () {
+  //将数据储存在localstrage中，只能存字符串
+  var string = JSON.stringify(hasMap); //序列化
+
+  localStorage.setItem('x', string);
+}; // $('.Add').click(()=>{
 //     console.log(`添加`)
 // })
 //1.使用.on添加相关事件，或者使用事件回调，添加事件
@@ -157,7 +207,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61510" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52123" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

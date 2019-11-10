@@ -10,10 +10,32 @@ a {
   text-decoration: none;
   color: black;
 }
+body {
+  background: #eee;
+}
+.header {
+  margin: 20px;
+}
 #search {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: space-between;
+}
+.search {
+  border: 1px solid black;
+  border: none;
+  border-radius: 4px;
+  white-space: nowrap;
+  margin-left: 10px;
+  background: #0282b9;
+  color: #ddd;
+  padding: 0px 28px;
+}
+.input {
+  width: 100%;
+  border: 1px solid #ddd;
+  border: none;
+  height: 40px;
+  border-radius: 4px;
 }
 
 .container {
@@ -24,9 +46,9 @@ a {
   max-height: 100%;
   white-space: pre-wrap;
 }
-.container>div{
-    flex: 1;
-    border:1px solid black
+.container > div {
+  flex: 1;
+  border: 1px solid black;
 }
 .item-lists {
   max-width: 80%;
@@ -34,10 +56,59 @@ a {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  white-space: nowrap;   /*文字不转行设置，中文内容需要设置，不然flex始终不会换行，flex内容的文字会一直填充*/
+  white-space: nowrap; /*文字不转行设置，中文内容需要设置，不然flex始终不会换行，flex内容的文字会一直填充*/
 }
-ul > li {
-  flex: 1;
+.main-container > ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+  justify-content: space-between;
+}
+.logo {
+  width: 64px;
+  height: 64px;
+  font-size: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  white-space: nowrap;
+}
+.item {
+  position: relative;
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  margin-bottom: 10px;
+}
+.content {
+  margin: 4px;
+  font-size: 14px;
+}
+.last {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.last > div {
+  width: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+.item > .delete {
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  display: none;
+  cursor: default;
+}
+.item:hover > .delete {
+  display: block;
 }
 
 

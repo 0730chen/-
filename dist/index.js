@@ -184,12 +184,7 @@ function reloadCSS() {
 }
 
 module.exports = reloadCSS;
-},{"./bundle-url":"../../Users/12523/AppData/Roaming/npm/node_modules/parcel/src/builtins/bundle-url.js"}],"main.css":[function(require,module,exports) {
-var reloadCSS = require('_css_loader');
-
-module.hot.dispose(reloadCSS);
-module.hot.accept(reloadCSS);
-},{"_css_loader":"../../Users/12523/AppData/Roaming/npm/node_modules/parcel/src/builtins/css-loader.js"}],"../../Users/12523/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"./bundle-url":"../../Users/12523/AppData/Roaming/npm/node_modules/parcel/src/builtins/bundle-url.js"}],"../../Users/12523/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -394,4 +389,4 @@ function hmrAcceptRun(bundle, id) {
   }
 }
 },{}]},{},["../../Users/12523/AppData/Roaming/npm/node_modules/parcel/src/builtins/hmr-runtime.js"], null)
-//# sourceMappingURL=/main.af46ece4.js.map
+//# sourceMappingURL=/index.js.map
