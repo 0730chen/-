@@ -14,7 +14,11 @@ body {
   background: #eee;
 }
 .header {
-  margin: 20px;
+  width: 35%;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 200px;
 }
 #search {
   display: flex;
@@ -29,6 +33,36 @@ body {
   background: #0282b9;
   color: #ddd;
   padding: 0px 28px;
+}
+.main-container{
+  width: 60%;
+  position: relative;
+  left:50%;
+  transform: translateX(-50%);
+}
+@media screen and (max-width:500px) {
+  #search {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+  }
+  .header {
+    width: 100%;
+    margin: 20px;
+  }
+  .search {
+    border: 1px solid black;
+    border: none;
+    border-radius: 4px;
+    white-space: nowrap;
+    margin-left: 10px;
+    background: #0282b9;
+    color: #ddd;
+    padding: 0px 28px;
+  }
+  .main-container{
+    width: 100%;
+  }
 }
 .input {
   width: 100%;
@@ -91,6 +125,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 10px;
 }
 .last > div {
   width: 160px;
