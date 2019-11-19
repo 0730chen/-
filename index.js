@@ -4,20 +4,23 @@ const xObject = JSON.parse(x)//字符串转化成对象
 //logo有图片和文本
 let $last = $('.last')
 let hasMap = xObject === [] || [
-    { logo: 'A', url: 'https://www.bilibili.com/' },
-    { logo: 'B', url: 'https://www.bilibili.com/' },
-    { logo: 'C', url: 'https://www.bilibili.com/' },
+    {logo: 'A', url: 'https://www.acfun.cn/'},
+    {logo: 'B', url: 'https://www.baidu.com/'},
+    {logo: 'C', url: 'https://www.csdn.com/'},
 ]
 //添加内容是$('标签'),然后使用append appendTo appendAfter
 //定义一个函数
+const simpliUrl = (url) => {
+    return url.replace(/((http:\/\/)|(https:\/\/))(www\.)?/, '').replace('/', '')
+}
 
 const render = () => {
     $('.itemList').find('.item').remove()
     hasMap.forEach((node, index) => {
         let $li = $(`
         <li class="item">
-        <div class="logo">${node.logo}</div>
-        <div class="content">${node.logo}站</div>
+        <div class="logo">${node.logo[0]}</div>
+        <div class="content">${simpliUrl(node.url)}</div>
         <div class="delete">
         <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-shanchu"></use>
@@ -40,10 +43,11 @@ $('.last').on('click', () => {
     let url = window.prompt('你要添加的网站')
     console.log(url)
     if (url === '' || url.indexOf('http') !== 0) {
-        url = 'https://' + url
+        url = simpliUrl('https://' + url)
+
     }
     console.log(url)
-    hasMap.push({ logo: url[0], url: url })
+    hasMap.push({logo: url[0], url: url})
     render()
 
     //在使用localstrage中储存数据
@@ -58,6 +62,14 @@ window.onbeforeunload = () => {
 
 
 }
+$(document).on('keypress',(e)=>{
+    const {key} =e
+    for (let i =0;i<hasMap.length;i++){
+        if(hasMap[i].logo.toLowerCase() ===key){
+            window.open(hasMap[i].url)
+        }
+    }
+})
 // $('.Add').click(()=>{
 //     console.log(`添加`)
 // })

@@ -63,6 +63,15 @@ body {
   .main-container{
     width: 100%;
   }
+  .main-container > ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    justify-content: space-between;
+  }
+  .item {
+    margin-right: 0px !important;
+  }
 }
 .input {
   width: 100%;
@@ -96,7 +105,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: 20px;
-  justify-content: space-between;
+  /*justify-content: space-between;*/
 }
 .logo {
   width: 64px;
@@ -116,6 +125,7 @@ body {
   align-items: center;
   background: white;
   margin-bottom: 10px;
+  margin-right:10px ;
 }
 .content {
   margin: 4px;

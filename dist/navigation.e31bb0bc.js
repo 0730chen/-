@@ -126,20 +126,24 @@ var xObject = JSON.parse(x); //字符串转化成对象
 var $last = $('.last');
 var hasMap = xObject === [] || [{
   logo: 'A',
-  url: 'https://www.bilibili.com/'
+  url: 'https://www.acfun.cn/'
 }, {
   logo: 'B',
-  url: 'https://www.bilibili.com/'
+  url: 'https://www.baidu.com/'
 }, {
   logo: 'C',
-  url: 'https://www.bilibili.com/'
+  url: 'https://www.csdn.com/'
 }]; //添加内容是$('标签'),然后使用append appendTo appendAfter
 //定义一个函数
+
+var simpliUrl = function simpliUrl(url) {
+  return url.replace(/((http:\/\/)|(https:\/\/))(www\.)?/, '').replace('/', '');
+};
 
 var render = function render() {
   $('.itemList').find('.item').remove();
   hasMap.forEach(function (node, index) {
-    var $li = $("\n        <li class=\"item\">\n        <div class=\"logo\">".concat(node.logo, "</div>\n        <div class=\"content\">").concat(node.logo, "\u7AD9</div>\n        <div class=\"delete\">\n        <svg class=\"icon\" aria-hidden=\"true\">\n        <use xlink:href=\"#icon-shanchu\"></use>\n        </svg>\n        </div>\n      </li>")).insertBefore($last);
+    var $li = $("\n        <li class=\"item\">\n        <div class=\"logo\">".concat(node.logo[0], "</div>\n        <div class=\"content\">").concat(simpliUrl(node.url), "</div>\n        <div class=\"delete\">\n        <svg class=\"icon\" aria-hidden=\"true\">\n        <use xlink:href=\"#icon-shanchu\"></use>\n        </svg>\n        </div>\n      </li>")).insertBefore($last);
     $li.on('click', function () {
       window.open(node.url);
     });
@@ -158,7 +162,7 @@ $('.last').on('click', function () {
   console.log(url);
 
   if (url === '' || url.indexOf('http') !== 0) {
-    url = 'https://' + url;
+    url = simpliUrl('https://' + url);
   }
 
   console.log(url);
@@ -175,7 +179,17 @@ window.onbeforeunload = function () {
   var string = JSON.stringify(hasMap); //序列化
 
   localStorage.setItem('x', string);
-}; // $('.Add').click(()=>{
+};
+
+$(document).on('keypress', function (e) {
+  var key = e.key;
+
+  for (var _i = 0; _i < hasMap.length; _i++) {
+    if (hasMap[_i].logo.toLowerCase() === key) {
+      window.open(hasMap[_i].url);
+    }
+  }
+}); // $('.Add').click(()=>{
 //     console.log(`添加`)
 // })
 //1.使用.on添加相关事件，或者使用事件回调，添加事件
@@ -207,7 +221,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "63446" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57489" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
