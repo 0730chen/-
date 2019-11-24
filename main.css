@@ -12,6 +12,8 @@ a {
 }
 body {
   background: #eee;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 .header {
   width: 35%;
@@ -19,6 +21,18 @@ body {
   left: 50%;
   transform: translateX(-50%);
   margin-top: 200px;
+}
+
+/*}*/
+.bg{
+  background: url("bg.jpg") 100% 100% no-repeat;
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
 }
 #search {
   display: flex;
@@ -39,6 +53,10 @@ body {
   position: relative;
   left:50%;
   transform: translateX(-50%);
+}
+.logoImg{
+  height: 32px;
+  width:32px;
 }
 @media screen and (max-width:500px) {
   #search {
@@ -72,6 +90,24 @@ body {
   .item {
     margin-right: 0px !important;
   }
+  .last{
+    height: 107.2px;
+  }
+  .bg{
+    background: url("move2.jpg") no-repeat 100% center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .main-container > ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    justify-content: space-between !important;
+  }
+
 }
 .input {
   width: 100%;
@@ -105,6 +141,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   margin: 20px;
+  justify-content: center;
   /*justify-content: space-between;*/
 }
 .logo {
@@ -118,14 +155,16 @@ body {
 }
 .item {
   position: relative;
-  width: 160px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background: white;
   margin-bottom: 10px;
-  margin-right:10px ;
+  margin-right:28px ;
 }
 .content {
   margin: 4px;
@@ -138,7 +177,10 @@ body {
   margin-bottom: 10px;
 }
 .last > div {
-  width: 160px;
+  height: 100%;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -147,8 +189,8 @@ body {
 }
 .item > .delete {
   position: absolute;
-  right: 10px;
-  top: 5px;
+  right: 15px;
+  top: 20px;
   display: none;
   cursor: default;
 }

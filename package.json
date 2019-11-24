@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/0730chen/-/issues"
   },
-  "homepage": "https://github.com/0730chen/-#readme"
+  "homepage": "https://github.com/0730chen/-#readme",
+  "devDependencies": {
+    "cssnano": "^4.1.10"
+  }
 }

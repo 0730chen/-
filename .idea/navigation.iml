@@ -3,6 +3,7 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$/../Node-API" />
     <content url="file://$MODULE_DIR$/../React-demo" />
+    <content url="file://$MODULE_DIR$/../myVuepress" />
     <content url="file://$MODULE_DIR$" />
     <content url="file://$MODULE_DIR$/../node-demo-1" />
     <orderEntry type="inheritedJdk" />
