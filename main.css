@@ -25,14 +25,10 @@ body {
 
 /*}*/
 .bg{
-  background: url("bg.jpg") 100% 100% no-repeat;
-  background-size: 100%;
-  width: 100%;
-  height: 100%;
+
+  max-width: 100%;
   position: absolute;
   top: 0;
-  left: 0;
-
 }
 #search {
   display: flex;
@@ -47,6 +43,23 @@ body {
   background: #0282b9;
   color: #ddd;
   padding: 0px 28px;
+}
+.menu{
+  position: fixed;
+  top: 0;
+  left:0;
+  margin-left:20px ;
+  max-height: 100%;
+  color: black;
+  border:1px solid black;
+}
+.navlogo{
+  height: 100px;
+  width: 100%;
+}
+.menu-list{
+  padding: 0 40px;
+  margin:20px 0;
 }
 .main-container{
   width: 60%;

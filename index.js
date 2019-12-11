@@ -1,19 +1,12 @@
-let i = 0
-const x = localStorage.getItem('x')
-const xObject = JSON.parse(x)//字符串转化成对象
+//字符串转化成对象
 //logo有图片和文本
-console.log(`xObject打印`);
-console.log(xObject);
+import Web from './web.js'
+import picUrl from "./pic.js";
+let i = 0
+const xObject = Web
 let $last = $('.last')
-// if(xObject ===[]){
-//     hasMap = [
-//         {logo: 'A', url: 'https://www.acfun.cn/', imgUrl: `https://cdn.aixifan.com/ico/favicon.ico`},
-//         {logo: 'B', url: 'https://www.baidu.com/', imgUrl: `https://www.baidu.com//favicon.ico`},
-//     ]
-// }else{
-//     hasMap = xObject
-// }
-let hasMap = xObject === [] ? [
+
+let hasMap = xObject === null ? [
     {logo: 'A', url: 'https://www.acfun.cn/', imgUrl: `https://cdn.aixifan.com/ico/favicon.ico`},
     {logo: 'B', url: 'https://www.baidu.com/', imgUrl: `https://www.baidu.com//favicon.ico`},
 ]:xObject
@@ -25,10 +18,17 @@ const simpliUrl = (url) => {
 
 {/*<div className="logo">${node.logo[0]}</div>*/
 }
+const imgUrl = (picUrl)=>{
+    let i = 0
+    return picUrl[i]
+}
+let src = imgUrl(picUrl)
+console.log(src);
 const render = () => {
     $('.itemList').find('.item').remove()
     console.log('渲染时候的hasMap')
     console.log(hasMap);
+    $('.bg').attr('src',src)
     hasMap.forEach((node, index) => {
         let $li = $(`
         <li class="item">
@@ -94,7 +94,3 @@ $(document).on('keypress', (e) => {
         }
     }
 })
-// $('.Add').click(()=>{
-//     console.log(`添加`)
-// })
-//1.使用.on添加相关事件，或者使用事件回调，添加事件
