@@ -2,14 +2,17 @@
 //logo有图片和文本
 import Web from './web.js'
 import picUrl from "./pic.js";
-let i = 0
-const xObject = Web
-let $last = $('.last')
 
-let hasMap = xObject === null ? [
+let i = 0
+let x = localStorage.getItem('x')
+const xObject = Web
+console.log(x)
+let $last = $('.last')
+console.log()
+let hasMap = x === null ? [
     {logo: 'A', url: 'https://www.acfun.cn/', imgUrl: `https://cdn.aixifan.com/ico/favicon.ico`},
     {logo: 'B', url: 'https://www.baidu.com/', imgUrl: `https://www.baidu.com//favicon.ico`},
-]:xObject
+] : JSON.parse(x)
 //添加内容是$('标签'),然后使用append appendTo appendAfter
 //定义一个函数
 const simpliUrl = (url) => {
@@ -18,8 +21,8 @@ const simpliUrl = (url) => {
 
 {/*<div className="logo">${node.logo[0]}</div>*/
 }
-const imgUrl = (picUrl)=>{
-    let i = 0
+const imgUrl = (picUrl) => {
+    let i = 1
     return picUrl[i]
 }
 let src = imgUrl(picUrl)
@@ -28,19 +31,22 @@ const render = () => {
     $('.itemList').find('.item').remove()
     console.log('渲染时候的hasMap')
     console.log(hasMap);
-    $('.bg').attr('src',src)
+    // $('.bg').attr('src',src)
     hasMap.forEach((node, index) => {
         let $li = $(`
         <li class="item">
+        <div class="item-container">
         <img src="${node.imgUrl}" alt="" class="logoImg">
-        <div class="content">${simpliUrl(node.url)}</div>
         <div class="delete">
         <svg class="icon" aria-hidden="true">
         <use xlink:href="#icon-shanchu"></use>
         </svg>
         </div>
+        </div>
+        <div class="content">${simpliUrl(node.url)}</div>
       </li>`).insertBefore($last)
         $li.on('click', () => {
+            console.log(node)
             window.open(node.url)
         })
         $('.item').on('click', '.delete', e => {
@@ -54,24 +60,24 @@ render()
 
 $('.last').on('click', () => {
     let url = window.prompt('你要添加的网站')
-    console.log(url)
     let imgUrl = url + `/favicon.ico`
-    console.log(imgUrl);
-
-    if (url === '' || url.indexOf('http') !== 0) {
-        url = simpliUrl('https://' + url)
-
+    console.log(url);
+    // if (url === '' || url.indexOf('http') !== 0) {
+    //     url = simpliUrl('https://' + url)
+    // }
+    // url = simpliUrl(url)
+    if (url === '') {
+        alert('不能为空')
+    } else if (url === null) {
+        alert('取消了！！！')
+    } else {
+        hasMap.push({logo: url[0], url: url, imgUrl: imgUrl})
+        console.log(`hasMap`);
+        console.log(hasMap);
+        const string = JSON.stringify(hasMap)//序列化
+        localStorage.setItem('x', string)
+        render()
     }
-    url = simpliUrl(url)
-    hasMap.push({logo: url[0], url: url, imgUrl: imgUrl})
-    console.log(`hasMap`);
-    console.log(hasMap);
-    const string = JSON.stringify(hasMap)//序列化
-    localStorage.setItem('x', string)
-    render()
-
-    //在使用localstrage中储存数据
-    // console.log($('.container'))
 })
 
 //监听页面离开
